@@ -1,0 +1,162 @@
+Realizando as configurações iniciais
+Após instalar o Git, é fundamental configurar suas informações de usuário. Essas informações são utilizadas para identificar as alterações que você realiza no repositório.
+
+git config --global user.name "Seu Nome"
+
+git config --global user.email "seuemail@exemplo.com"
+Você pode conferir as configurações atuais com o comando:
+
+git config --list
+Além disso, é interessante definir outras configurações, como a formatação da saída e o editor de texto padrão para mensagens de commit, por exemplo:
+
+git config --global core.editor "code --wait"
+Essas configurações iniciais são essenciais para que o Git registre os commits corretamente e com informações precisas.
+
+Comandos Básicos do Git
+Agora que o Git está instalado e configurado, vamos explorar os comandos básicos que todo desenvolvedor deve conhecer para iniciar a gestão do seu repositório.
+
+1. git init
+O comando git init inicializa um novo repositório Git em um diretório. Ao executar este comando, o Git cria uma pasta oculta chamada .git, onde todos os metadados do repositório são armazenados.
+
+mkdir meu-projeto
+
+cd meu-projeto
+
+git init
+2. git clone
+Se você precisa trabalhar em um projeto já existente hospedado em uma plataforma de repositórios (como GitHub, GitLab ou Bitbucket), use o comando git clone. Ele copia todo o repositório para seu ambiente local.
+
+git clone https://github.com/exemplo/meu-projeto.git
+3. git status
+O comando git status é extremamente útil para visualizar o estado atual do seu repositório, exibindo informações sobre arquivos modificados, arquivos que ainda precisam ser adicionados ao staging e arquivos que não estão sendo monitorados.
+
+git status
+4. git add
+Antes de realizar um commit, você precisa adicionar as alterações que deseja registrar. O comando git add coloca os arquivos modificados na área de staging.
+
+git add arquivo.txt
+Para adicionar todas as alterações de uma vez:
+
+git add .
+5. git commit
+Uma vez que os arquivos estejam na área de staging, o comando git commit irá salvar essas alterações no histórico do projeto. É importante escrever mensagens de commit claras e concisas.
+
+git commit -m "Adiciona nova funcionalidade de login"
+6. git log
+Para visualizar o histórico de commits realizados no repositório, utilize o comando git log. Ele apresenta uma lista de commits com informações detalhadas como hash, autor e data.
+
+git log
+7. git diff
+Esse comando é crucial para identificar as diferenças entre diversas versões do código. Você pode usá-lo para ver mudanças não indexadas ou as diferenças entre commits.
+
+git diff
+Esses comandos formam a base de qualquer fluxo de trabalho com Git. Com eles, é possível criar e manter seus repositórios de forma organizada e eficiente.
+
+Leia também: As 20 Melhores Ferramentas para Desenvolvimento Web
+Trabalhando com o repositório remoto
+Em projetos colaborativos, é comum manter um repositório central onde todas as alterações são sincronizadas. Nesta seção, veremos como interagir com repositórios remotos.
+
+1. git remote
+O comando git remote lista os repositórios remotos associados ao seu repositório local. Geralmente, o repositório remoto padrão é nomeado de “origin”.
+
+git remote -v
+2. git remote add
+Caso você precise adicionar um novo repositório remoto, use o comando git remote add.
+
+git remote add origin https://github.com/seuusuario/seuprojeto.git
+3. git fetch
+O comando git fetch baixa todas as referências e commits de um repositório remoto, mas não realiza a junção das alterações com o repositório local automaticamente. Ele é ideal para monitorar mudanças e revisar o histórico.
+
+git fetch origin
+4. git pull
+Para sincronizar seu repositório local com as alterações existentes no remoto, use o comando git pull. Ele combina o fetch e o merge em um único passo, integrando as mudanças automaticamente.
+
+git pull origin master
+5. git push
+Finalmente, para enviar suas alterações locais para o repositório remoto, utilize o comando git push. Certifique-se de ter permissão de escrita no repositório remoto.
+
+git push origin master
+Com esses comandos, fica mais simples manter o seu repositório alinhado com as alterações de outros colaboradores, garantindo que o desenvolvimento seja sempre integrado de maneira harmoniosa.
+
+Gerenciando Branches
+Uma das funcionalidades mais interessantes do Git é a capacidade de trabalhar com branches. Eles permitem que você crie linhas de desenvolvimento isoladas, facilitando o teste de novas funcionalidades sem impactar a versão principal do código.
+
+1. Criando e listando Branches
+Criar uma nova branch:
+
+Para criar uma nova branch, use:
+
+git branch nome-da-branch
+Listar branches existentes:
+
+Para visualizar todas as branches do repositório:
+
+git branch
+2. git checkout
+Esse comando é usado para alternar entre branches. Ao realizar o checkout para uma branch, o Git atualiza seu diretório de trabalho com os conteúdos da branch selecionada.
+
+git checkout nome-da-branch
+Você também pode criar e alternar para uma nova branch em um único comando:
+
+git checkout -b nova-feature
+3. git merge
+Após terminar o desenvolvimento em uma branch separada, você pode incorporar as alterações na branch principal (geralmente o master ou main) usando o comando git merge.
+
+git checkout master
+
+git merge nome-da-branch
+4. git rebase
+O rebase é uma alternativa ao merge, permitindo reorganizar commits de forma linear. Apesar de ser uma operação poderosa, deve ser usada com cautela, principalmente em repositórios compartilhados.
+
+git checkout nova-feature
+
+git rebase master
+5. git branch -d e -D
+Após fundir as mudanças de uma branch ao seu ramo principal, é uma boa prática deletar a branch que não será mais utilizada:
+
+Comando seguro:
+
+git branch -d nome-da-branch
+Esse comando somente funcionará se a branch já estiver integrada ao ramo principal.
+
+Deleção forçada: 
+
+git branch -D nome-da-branch
+Use com cuidado, pois pode resultar na perda de alterações não integradas.
+
+Comandos avançados do Git
+Para além dos comandos básicos, o Git oferece uma série de funcionalidades avançadas que podem ajudar a resolver problemas complexos e otimizar seu fluxo de trabalho.
+
+1. git stash
+Durante o desenvolvimento, pode ser necessário mudar de branch sem realizar um commit das alterações não finalizadas. O comando git stash permite salvar temporariamente essas modificações.
+
+git stash
+Para recuperar essas alterações, basta usar:
+
+git stash pop
+2. git cherry-pick
+O comando git cherry-pick aplica um commit específico de outra branch na branch atual. Essa ferramenta é útil quando você deseja incorporar apenas determinadas alterações sem fazer um merge completo.
+
+git cherry-pick abc1234
+3. git reset
+O git reset é uma ferramenta poderosa para desfazer commits. Dependendo das opções utilizadas, ele pode apenas desindexar arquivos ou reverter completamente o histórico de commits.
+
+Desfazer alterações do staging:
+
+git reset HEAD arquivo.txt
+Mover o ponteiro do commit (modo soft):
+
+git reset --soft HEAD~1
+Modo hard, que desfaz alterações no diretório de trabalho:
+
+git reset --hard HEAD~1
+4. git revert
+Ao contrário do reset, o git revert cria um novo commit que desfaz as alterações de um commit anterior, preservando o histórico do repositório. Essa abordagem é mais recomendada em repositórios colaborativos.
+
+git revert abc1234
+5. git rebase -i
+O rebase interativo permite que você edite commits existentes – por exemplo, para alterar mensagens de commit, combinar múltiplos commits ou reorganizá-los antes de enviá-los ao repositório remoto.
+
+git rebase -i HEAD~3
+Essa funcionalidade é especialmente útil para manter um histórico limpo e compreensível.
+
