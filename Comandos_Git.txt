@@ -1,4 +1,4 @@
-Realizando as configurações iniciais
+Realizando as configurações iniciais para o Git.
 Após instalar o Git, é fundamental configurar suas informações de usuário. Essas informações são utilizadas para identificar as alterações que você realiza no repositório.
 
 git config --global user.name "Seu Nome"
